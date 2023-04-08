@@ -11,6 +11,14 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { ServerTestComponent } from './server-test/server-test.component';
+import { CockpitComponent } from './server-test/cockpit/cockpit.component';
+import { ServerElementComponent } from './server-test/server-element/server-element.component';
+import { GameChallengeComponent } from './game-challenge/game-challenge.component';
+import { GameControlComponent } from './game-challenge/game-control/game-control.component';
+import { EvenComponent } from './game-challenge/even/even.component';
+import { OddComponent } from './game-challenge/odd/odd.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +30,13 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
     RecipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
+    ServerTestComponent,
+    CockpitComponent,
+    ServerElementComponent,
+    GameChallengeComponent,
+    GameControlComponent,
+    EvenComponent,
+    OddComponent,
   ],
   imports: [
     BrowserModule,
