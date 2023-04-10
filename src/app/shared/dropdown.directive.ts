@@ -14,8 +14,8 @@ export class DropdownDirective {
   //   this.isOpen = !this.isOpen;
   // }
 
-  @HostListener('mouseleave') toggleLeave(){
-    this.isOpen = !this.isOpen;
-  }
+  // @HostListener('mouseleave') toggleLeave(){
+  //   this.isOpen = false;
+  // }
 
 }
