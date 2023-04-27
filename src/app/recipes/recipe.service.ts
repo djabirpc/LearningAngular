@@ -9,38 +9,56 @@ import { ShoppingListService } from "../shopping-list/shooping-list.service";
 
 @Injectable({providedIn: 'root'})
 export class RecipeService{
-    private recipes: Recipe[] = [
-        new Recipe(
-          'A Test Recipe',
-          'A Desc Test',
-          'https://www.indianhealthyrecipes.com/wp-content/uploads/2021/10/mint-chutney-pudina-chutney-recipe.jpg',
-          [
-            new Ingredient('Meat', 1),
-            new Ingredient('Frech Fries', 20),
-          ]
-        ),
-        new Recipe(
-          'Another Test Recipe',
-          'A Desc Test',
-          'https://www.indianhealthyrecipes.com/wp-content/uploads/2021/10/mint-chutney-pudina-chutney-recipe.jpg',
-          [
-            new Ingredient('Buns', 1),
-            new Ingredient('Meat', 2),
-          ]
-        )
-    ];
+  recipeChange = new Subject<Recipe[]>();
 
-    constructor(private slService: ShoppingListService){}
+  private recipes: Recipe[] = [
+      new Recipe(
+        'A Test Recipe',
+        'A Desc Test',
+        'https://www.indianhealthyrecipes.com/wp-content/uploads/2021/10/mint-chutney-pudina-chutney-recipe.jpg',
+        [
+          new Ingredient('Meat', 1),
+          new Ingredient('Frech Fries', 20),
+        ]
+      ),
+      new Recipe(
+        'Another Test Recipe',
+        'A Desc Test',
+        'https://www.indianhealthyrecipes.com/wp-content/uploads/2021/10/mint-chutney-pudina-chutney-recipe.jpg',
+        [
+          new Ingredient('Buns', 1),
+          new Ingredient('Meat', 2),
+        ]
+      )
+  ];
 
-    getRecipes(){
-        return this.recipes.slice();
-    }
+  constructor(private slService: ShoppingListService){}
 
-    getRecipe(id: number){
-      return this.recipes[id];
-    }
+  getRecipes(){
+      return this.recipes.slice();
+  }
 
-    addIngredientsToShoppingList(ingredients: Ingredient[]){
-        this.slService.addIngredients(ingredients);
-    }
+  getRecipe(id: number){
+    return this.recipes[id];
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]){
+      this.slService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe){
+    this.recipes.push(recipe);
+    this.recipeChange.next(this.recipes.slice())
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe){
+    this.recipes[index] = newRecipe;
+    this.recipeChange.next(this.recipes.slice())
+  }
+
+  deleteRecipe(index: number){
+    this.recipes.splice(index, 1);
+    this.recipeChange.next(this.recipes.slice())
+
+  }
 }

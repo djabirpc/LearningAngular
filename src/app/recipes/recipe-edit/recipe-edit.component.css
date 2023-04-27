@@ -1,0 +1,4 @@
+input.ng-invalide.ng-touched, 
+textarea.ng-invalide.ng-touched{
+    border: 1px solid red;
+}
